@@ -1,0 +1,21 @@
+Defensive Distillation was recently proposed as a defense to
+adversarial examples.
+
+Unfortunately, distillation is not secure. We show this in our paper, at
+http://nicholas.carlini.com/papers/2016_defensivedistillation.pdf
+We strongly believe that research should be reproducible, and so our
+releasing the code required to train a baseline model on MNIST, train
+a defensively distilled model on MNIST, and attack the defensively
+distilled model.
+
+To run the code, you will need Python 3.x with TensorFlow. It will be slow
+unless you have a GPU to train on.
+
+Begin by running train_baseline.py and train_distillation.py; that will
+create three model files, two of which are useful. They should report
+final accuracy around 99.3% +/-0.2%.
+
+To construct adversarial examples, run l0_attack.py passing as argument
+either models/baseline models/distilled. This will run the modified l0
+adversary on the given model. The success probability should be ~95%
+modifying ~35 pixels.
