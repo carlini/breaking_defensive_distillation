@@ -1,3 +1,16 @@
+Update: this repository is out of date. It contains strictly less
+useful code than the repository at the following URL:
+
+https://github.com/carlini/nn_robust_attacks
+
+
+In particular, do not use the l0 attack in this repository; it is
+only good at breaking defensive distillation (not other attacks).
+
+
+----
+
+
 Defensive Distillation was recently proposed as a defense to
 adversarial examples.
 
