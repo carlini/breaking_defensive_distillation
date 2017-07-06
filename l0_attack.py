@@ -39,7 +39,7 @@ def modified_papernot_attack(imgs, labs, TEMPERATURE):
     grads_target = tf.gradients(target_probability, [delta])[0]
     grads_other = tf.gradients(other_probability, [delta])[0]
 
-    s.run(tf.initialize_all_variables())
+    s.run(tf.global_variables_initializer())
 
     total = []
     costs = []

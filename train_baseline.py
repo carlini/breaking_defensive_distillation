@@ -31,7 +31,8 @@ def train(train_data, train_labels, file_name, NUM_EPOCHS=50, BATCH_SIZE=128, TR
     model, saver = make_model(None, NUM_CHANNELS=NUM_CHANNELS, IMAGE_SIZE=IMAGE_SIZE)
     
     logits = model(train_xs, True)
-    loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits/TRAIN_TEMP, train_ys))
+    loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits/TRAIN_TEMP,
+                                                                  labels=train_ys))
     
     lr = tf.placeholder(tf.float32, [])
     momentum = tf.placeholder(tf.float32, [])
@@ -53,7 +54,7 @@ def train(train_data, train_labels, file_name, NUM_EPOCHS=50, BATCH_SIZE=128, TR
         
     
     with tf.Session() as s:
-        tf.initialize_all_variables().run()
+        tf.global_variables_initializer().run()
         
         for step in range(NUM_EPOCHS * train_size // BATCH_SIZE):
             epoch = (float(step) * BATCH_SIZE / train_size)
